@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="python_multiprocess_crawler",
-    version="1.1.0",
+    version="1.3.0",
     author="Jákob Rolík",
     author_email="rolik.jakob@gmail.com",
     description="Python BaseClass for easier multiprocess web-crawling",
@@ -15,7 +15,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: Apache License 2.0",
+        "License :: OSI Approved :: Artistic License",
         "Operating System :: OS Independent",
     ],
 )
