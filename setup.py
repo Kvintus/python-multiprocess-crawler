@@ -4,8 +4,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="python-multiprocess-crawler",
-    version="1.0.0",
+    name="python_multiprocess_crawler",
+    version="1.1.0",
     author="Jákob Rolík",
     author_email="rolik.jakob@gmail.com",
     description="Python BaseClass for easier multiprocess web-crawling",
