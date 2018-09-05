@@ -7,7 +7,6 @@ import multiprocessing
 from typing import List
 from multiprocessing import Manager
 
-
 class CrawlerBase:
     """ 
     A Base class for crawlers and spiders that will be able to implement multiprocessing

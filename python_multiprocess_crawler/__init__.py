@@ -1,2 +1,3 @@
 # VScode intelisense wouldn't work without this file
-name = "python_multiprocess_crawler"
+from .main import CrawlerBase
+# name = "python_multiprocess_crawler"
