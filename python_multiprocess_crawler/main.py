@@ -53,6 +53,7 @@ class CrawlerBase:
             else:
                 auth = f"{proxy['username']}:{proxy['password']}"
                 default_headers = urllib3.make_headers(proxy_basic_auth=auth)
+                print({**customHeader, **default_headers})
                 http = urllib3.ProxyManager(proxy['server'], headers={**customHeader, **default_headers})
 
         else:
@@ -103,6 +104,8 @@ class CrawlerBase:
             # while loop is not exited while the processes are running
             # and have not filled the queue yet
             self.waitForMultiprocessesToFinish(processes)
+            pool.close()
+            pool.join()
     
     def parse(self):
         raise NotImplementedError("This class should be used only as a base class")
