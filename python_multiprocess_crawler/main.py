@@ -4,6 +4,7 @@ import urllib.parse
 from bs4 import BeautifulSoup as Soup
 import user_agent
 import multiprocessing
+import requests
 from typing import List
 from multiprocessing import Manager
 
