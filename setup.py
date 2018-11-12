@@ -13,7 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/Kvintus/python_multiprocess_crawler",
     packages=setuptools.find_packages(),
-    install_requires=['requests', 'bs4', 'user_agent']
+    install_requires=['requests', 'bs4', 'user_agent'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Artistic License",
