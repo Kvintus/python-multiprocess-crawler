@@ -34,34 +34,16 @@ class CrawlerBase:
     def addUrlToTheQueue(self, url: str):
         self.queue.put(url)
 
-    def downloadSourceCode(self, url, proxy=None) -> urllib3.response.HTTPResponse:
+    def downloadSourceCode(self, url: str, proxy: str) -> str:
         """ 
         Downloads and returns the source code 
         of the website from the passed-in url 
         """
-        http = None
         customHeader = {'user-agent': user_agent.generate_user_agent()}
+        proxy = {'http': proxy}
 
-        if proxy:
-            if 'socks5' in proxy['server']:
-                http = SOCKSProxyManager(
-                    proxy['server'],
-                    headers=customHeader,
-                    username=proxy['username'],
-                    password=proxy['password']
-                )
-            else:
-                auth = f"{proxy['username']}:{proxy['password']}"
-                default_headers = urllib3.make_headers(proxy_basic_auth=auth)
-                print({**customHeader, **default_headers})
-                http = urllib3.ProxyManager(proxy['server'], headers={**customHeader, **default_headers})
-
-        else:
-            http = urllib3.PoolManager(headers=customHeader)
-    
-        r = http.request('GET', url)
-
-        return r
+        r = requests.get(url, headers=customHeader, proxies=proxy)
+        return r.text
     
     def downloadSourceCodeAsBs4(self, url, proxy = None) -> Soup:
         """ Downloads the website and converts it to bs4 """
