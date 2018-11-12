@@ -41,7 +41,12 @@ class CrawlerBase:
         of the website from the passed-in url 
         """
         customHeader = {'user-agent': user_agent.generate_user_agent()}
-        proxy = {'http': proxy}
+        
+        proxy = {
+            'http': 'http://' + proxy, 
+            'https': 'https://' + proxy
+        }
+
 
         r = requests.get(url, headers=customHeader, proxies=proxy)
         return r.text
@@ -49,7 +54,7 @@ class CrawlerBase:
     def downloadSourceCodeAsBs4(self, url, proxy = None) -> Soup:
         """ Downloads the website and converts it to bs4 """
         r = self.downloadSourceCode(url=url, proxy=proxy)
-        return Soup(r.data, 'html.parser')
+        return Soup(r, 'html.parser')
 
     def waitForMultiprocessesToFinish(self, processes_to_await: List):
         """ Blocks until all the processes from the array are not finished """
